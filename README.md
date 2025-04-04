@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/ljfreelancer88/gideon.svg?style=flat-square)](https://packagist.org/packages/ljfreelancer88/gideon)
 ![GitHub Actions](https://github.com/ljfreelancer88/gideon/actions/workflows/main.yml/badge.svg)
 
-Excimer-powered profiling tailored for PHP—gain real-time performance insights with minimal overhead.
+Excimer-powered profiling tailored for PHP—gain real-time performance insights with minimal overhead. It is named after the biblical figure Gideon, who was known for his keen strategic insights and ability to assess and profile his enemies before battle.
 
 ## Installation
 
