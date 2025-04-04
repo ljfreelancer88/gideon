@@ -1,10 +1,10 @@
-# Very short description of the package
+# Gideon
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ljfreelancer88/gideon.svg?style=flat-square)](https://packagist.org/packages/ljfreelancer88/gideon)
 [![Total Downloads](https://img.shields.io/packagist/dt/ljfreelancer88/gideon.svg?style=flat-square)](https://packagist.org/packages/ljfreelancer88/gideon)
 ![GitHub Actions](https://github.com/ljfreelancer88/gideon/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Excimer-powered profiling tailored for PHP—gain real-time performance insights with minimal overhead.
 
 ## Installation
 
@@ -46,7 +46,3 @@ If you discover any security related issues, please email info@minimaxweb.ca ins
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## PHP Package Boilerplate
-
-This package was generated using the [PHP Package Boilerplate](https://laravelpackageboilerplate.com) by [Beyond Code](http://beyondco.de/).
