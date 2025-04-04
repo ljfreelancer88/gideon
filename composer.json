@@ -1,0 +1,42 @@
+{
+    "name": "ljfreelancer88/gideon",
+    "description": "Excimer-powered profiling tailored for PHP—gain real-time performance insights with minimal overhead.",
+    "keywords": [
+        "ljfreelancer88",
+        "gideon"
+    ],
+    "homepage": "https://github.com/ljfreelancer88/gideon",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jake Pucan",
+            "email": "info@minimaxweb.ca",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ljfreelancer88\\Gideon\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ljfreelancer88\\Gideon\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
