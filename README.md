@@ -18,7 +18,13 @@ composer require ljfreelancer88/gideon
 To automatically enable this for all web requests and entry points, you can use the PHP `auto_prepend_file` option.
 
 ```php
-new Gideon()->start();
+# site-wide-profiler.php
+ 
+require __DIR__ . '/vendor/autoload.php';
+
+use Ljfreelancer88\Gideon\Gideon;
+
+new Gideon()->siteWide();
 ```
 
 ### Testing
