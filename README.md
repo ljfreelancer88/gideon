@@ -15,9 +15,10 @@ composer require ljfreelancer88/gideon
 ```
 
 ## Usage
+To automatically enable this for all web requests and entry points, you can use the PHP `auto_prepend_file` option.
 
 ```php
-// Usage description here
+new Gideon()->start();
 ```
 
 ### Testing
