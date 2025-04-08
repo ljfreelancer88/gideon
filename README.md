@@ -15,16 +15,64 @@ composer require ljfreelancer88/gideon
 ```
 
 ## Usage
-To automatically enable this for all web requests and entry points, you can use the PHP `auto_prepend_file` option.
+To automatically enable this for all web requests and entry points, you can use the PHP `auto_prepend_file` option. 
+This approach doesn't require you to touch or modify your existing codebase.
 
 ```php
-# site-wide-profiler.php
- 
 require __DIR__ . '/vendor/autoload.php';
 
-use Ljfreelancer88\Gideon\Gideon;
+use Ljfreelancer88\Gideon\{
+    ExcimerWrapper,
+    FileWriter,
+    Collect
+};
 
-new Gideon()->siteWide();
+// Create the writer — write to /tmp/excimer.log
+$writer = new FileWriter('/tmp/excimer.log');
+
+// Create the profiler wrapper (defaults: 60s period, 250 depth)
+$profiler = new ExcimerWrapper();
+
+// Inject both into Collect
+$collect = new Collect($profiler, $writer);
+
+// Option 1: Or site-wide sampling (call once per process start e.g., FPM worker)
+$collect->siteWideProfiling();
+
+// Option 2: Enable per-request profiling
+$collect->perRequestProfiling();
+
+```
+
+But if you want to integrate in your Laravel app.
+```php
+# Add this to your AppServiceProvider or a custom profiler service provider:
+use Ljfreelancer88\Gideon\{
+    Collect,
+    ExcimerWrapper,
+    FileWriter
+};
+
+public function register(): void
+{
+    $this->app->singleton(Collect::class, function () {
+        $writer = new FileWriter(storage_path('logs/excimer.log'));
+        $profiler = new ExcimerWrapper(60, 250); // 60s sampling, depth 250
+        return new Collect($profiler, $writer);
+    });
+}
+
+# Then in your App\Http\Kernel or a middleware:
+public function boot(Collect $collect)
+{
+    $collect->perRequestProfiling();
+}
+
+# Or, for long-running queue workers:
+
+// In your queue bootstrap or Laravel worker
+app(Collect::class)->siteWideProfiling();
+
 ```
 
 ### Testing
