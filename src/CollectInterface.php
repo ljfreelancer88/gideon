@@ -2,7 +2,8 @@
 
 namespace Ljfreelancer88\Gideon;
 
-interface CollectInterface {
+interface CollectInterface 
+{
     public function perRequest(): bool;
     public function siteWide(): bool;
 }
