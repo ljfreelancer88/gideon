@@ -4,14 +4,15 @@ namespace Ljfreelancer88\Gideon;
 
 use ExcimerProfiler;
 
-final class ExcimerWrapper
+final class ExcimerWrapper implements ProfilerInterface
 {
+    private static ?self $instance = null;
     private ExcimerProfiler $profiler;
 
-    public function __construct(float $intervalSeconds = 60, int $maxDepth = 250)
+    public function __construct(float $periodSeconds = 60, int $maxDepth = 250)
     {
         $this->profiler = new ExcimerProfiler();
-        $this->profiler->setPeriod($intervalSeconds);
+        $this->profiler->setPeriod($periodSeconds);
         $this->profiler->setMaxDepth($maxDepth);
         $this->profiler->setEventType(EXCIMER_REAL);
     }
@@ -41,8 +42,11 @@ final class ExcimerWrapper
         $this->profiler->setFlushCallback($callback, $intervalSeconds);
     }
 
-    public function getRawProfiler(): ExcimerProfiler
+    public static function siteWideInstance(float $periodSeconds = 60, int $maxDepth = 250): self
     {
-        return $this->profiler;
+        if (self::$instance === null) {
+            self::$instance = new self($periodSeconds, $maxDepth);
+        }
+        return self::$instance;
     }
 }
